@@ -1,0 +1,22 @@
+{
+  "name": "Postman-Test",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "workspaceFolder": "/app",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/app,type=bind",
+    "source=postman_node_modules,target=/app/node_modules,type=volume"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "postCreateCommand": "npm install"
+}

@@ -1,0 +1,7 @@
+{
+  "疎通確認": [
+    { "token": "eyJ1c2VySWQiOjQ2NTQ0ODcxMDEsImtleSI6IllCSHBOS1Jrbnh2ZFBOZEJCaTZKTm5oRCJ9",   "expectedStatus": 200 },
+    { "token": "INVALID_TOKEN", "expectedStatus": 401 },
+    { "token": "",              "expectedStatus": 401 }
+  ]
+}

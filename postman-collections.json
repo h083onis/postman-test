@@ -1,0 +1,2931 @@
+{
+  "item": [
+    {
+      "id": "163ee567-00d6-4008-8637-4d71bfbbc7dc",
+      "name": "Folder",
+      "description": {
+        "content": "フォルダ関連",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8eacbdba-b415-46d5-af5e-2e9684a2748b",
+          "name": "フォルダ一覧",
+          "request": {
+            "name": "フォルダ一覧",
+            "description": {
+              "content": "フォルダ一覧を配列で返す。\nパラメータにdriveIdを指定しない場合、トップレベルのフォルダ一覧を取得する。\ndriveIdを指定した場合、そのフォルダに含まれるフォルダを取得する。\n指定したフォルダにタグフォルダが含まれる場合、tagListにツリーで出力される。\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get-folders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "driveId",
+                  "value": "<integer>",
+                  "description": "対象フォルダ内のフォルダを取得する場合に指定する。\n指定しない場合、トップレベルのフォルダ一覧を取得する。\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02534bde-5854-4c88-9d03-c01a7babc350",
+              "name": "フォルダ一覧",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"driveId\": -11034538,\n  \"folderList\": [\n    {\n      \"driveId\": 33093840,\n      \"part\": 0,\n      \"name\": \"ex laborum in ipsum velit\"\n    },\n    {\n      \"driveId\": 64046804,\n      \"part\": 0,\n      \"name\": \"eiusmod ipsum\"\n    }\n  ],\n  \"tagList\": [\n    {\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        }\n      ],\n      \"folderName\": \"sed magna esse\",\n      \"tag\": [\n        \"Excepteur eu\",\n        \"non in\"\n      ]\n    },\n    {\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        }\n      ],\n      \"folderName\": \"enim esse commodo exercitation dolore\",\n      \"tag\": [\n        \"exercitation deserunt p\",\n        \"sit commodo culpa nisi\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "227a5d40-05d3-44db-a15c-89213b8e633e",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ed49d7f-af27-4e0f-9b30-3e9b7b5dceac",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "560f2980-66ec-45ee-b9f6-dc44c980d9a6",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "36454a65-c80e-4d7f-a049-0b4a9513fff8",
+          "name": "フォルダにアクセス可能なユーザ一覧",
+          "request": {
+            "name": "フォルダにアクセス可能なユーザ一覧",
+            "description": {
+              "content": "フォルダにアクセス可能なユーザ一覧。個人、グループ、チームの単位で取得。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get-folder-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "driveId",
+                  "value": "<integer>",
+                  "description": "(Required) ユーザ一覧を取得したいフォルダのID"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "(Required) ユーザ一覧の取得開始位置"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "(Required) ユーザ一覧の取得上限数"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d9d772c2-bec3-44fc-aeac-de0890f4de40",
+              "name": "ユーザリスト",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folder-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userType\": \"group\",\n    \"id\": 19206195,\n    \"name\": \"irure reprehenderit dolor adipisicing\",\n    \"role\": \"owner\",\n    \"driveUserType\": 0,\n    \"isOutsideUser\": true,\n    \"isLimitUser\": true\n  },\n  {\n    \"userType\": \"team\",\n    \"id\": 85549198,\n    \"name\": \"magna exercitation\",\n    \"role\": \"owner\",\n    \"driveUserType\": 4,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9db1bba2-8e3b-4c38-93c0-c9e965af7183",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folder-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c4c671e-23d9-43fa-a15e-929d76ddd19c",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folder-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9afe2da5-7033-4927-b7ab-f51809ab54ff",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-folder-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "066c201d-c826-4fb4-bb34-e05905826b75",
+          "name": "ユーザ、グループ、チーム一覧",
+          "request": {
+            "name": "ユーザ、グループ、チーム一覧",
+            "description": {
+              "content": "関連するユーザ、グループ、チームの情報を取得する。\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userType",
+                  "value": "<string>",
+                  "description": "(Required) 個人、グループ、チーム判定:\n  * 'user' - 個人\n  * 'group' - グループ\n  * 'team' - チーム\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "ユーザ一覧の取得開始位置。\nuserType=userの場合のみ必須で有効となり、それ以外では無視される。\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "ユーザ一覧の取得上限数。\nuserType=userの場合のみ必須で有効となり、それ以外では無視される。\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da9a42f2-9991-4e23-aa2d-985c8c8133c3",
+              "name": "ユーザリスト",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"userType\": \"group\",\n    \"id\": 19206195,\n    \"name\": \"irure reprehenderit dolor adipisicing\",\n    \"role\": \"owner\",\n    \"driveUserType\": 0,\n    \"isOutsideUser\": true,\n    \"isLimitUser\": true\n  },\n  {\n    \"userType\": \"team\",\n    \"id\": 85549198,\n    \"name\": \"magna exercitation\",\n    \"role\": \"owner\",\n    \"driveUserType\": 4,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "402ecb15-cef1-4b73-a749-bc4bffcb7ab5",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bfcd01b-11fd-4801-8506-4eb35999e563",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b0f0672-f6b9-4b04-b2d5-128fa91bb5ce",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "ccf52af2-d022-45ce-a39d-38817acfe056",
+          "name": "フォルダ確認",
+          "request": {
+            "name": "フォルダ確認",
+            "description": {
+              "content": "フォルダが存在することを確認する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "exists-folder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "driveId",
+                  "value": "<integer>",
+                  "description": "(Required) 対象フォルダ"
+                },
+                {
+                  "disabled": false,
+                  "key": "tagList",
+                  "value": "<string>",
+                  "description": "タグフォルダを対象とする場合指定する。\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78e51bcc-d3ae-4506-8328-d60b2c58bdc2",
+              "name": "フォルダの有無",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exists-folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagList",
+                      "value": "tag"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exists\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "731cb38e-69f7-47c0-9fc4-eb8715fcdd69",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exists-folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagList",
+                      "value": "tag"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f67b4898-194a-4f3e-a397-e6448b2bd0e3",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exists-folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagList",
+                      "value": "tag"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a25136e6-a106-40ba-bd04-66bc3222da30",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exists-folder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "driveId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "tagList",
+                      "value": "tag"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a269dc62-1f5d-4618-89fe-30bcb6e7ef79",
+      "name": "File",
+      "description": {
+        "content": "ファイル関連",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d61d478-0007-48e5-b671-920aa529d68b",
+          "name": "配布ファイル追加",
+          "request": {
+            "name": "配布ファイル追加",
+            "description": {
+              "content": "配布ファイルをアップロードし、指定のノートに割り当てる。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "add-file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "cartId",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "(Required) 配布ノートID"
+                },
+                {
+                  "key": "coordinateMode",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)"
+                },
+                {
+                  "key": "file",
+                  "value": "[]",
+                  "type": "text",
+                  "description": "(Required) アップロードファイル"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94170159-fd12-4644-8062-9710e6e2b3da",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) 配布ノートID",
+                        "type": "text/plain"
+                      },
+                      "key": "cartId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                        "type": "text/plain"
+                      },
+                      "key": "coordinateMode",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) アップロードファイル",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "[]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18b5262c-f127-48ad-91e4-eb937effc6ea",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) 配布ノートID",
+                        "type": "text/plain"
+                      },
+                      "key": "cartId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                        "type": "text/plain"
+                      },
+                      "key": "coordinateMode",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) アップロードファイル",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "[]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecbd7a4b-02ed-4638-ba58-57d259eaac45",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) 配布ノートID",
+                        "type": "text/plain"
+                      },
+                      "key": "cartId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                        "type": "text/plain"
+                      },
+                      "key": "coordinateMode",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) アップロードファイル",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "[]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abffb1a9-1d99-461e-85ce-3c51f2aca7d3",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) 配布ノートID",
+                        "type": "text/plain"
+                      },
+                      "key": "cartId",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                        "type": "text/plain"
+                      },
+                      "key": "coordinateMode",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) アップロードファイル",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "[]",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d68ef12-b364-4e1d-b2b2-3b116d735763",
+          "name": "ファイル削除",
+          "request": {
+            "name": "ファイル削除",
+            "description": {
+              "content": "配布ノートに割り当てたファイルを削除する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delete-file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01f64033-08f9-4ef3-9f86-ffecd99719ab",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69d90128-f437-4403-9653-ea595d05b37d",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcdf1f95-3cc0-4a1a-aab2-3bc859a50911",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1169cdd-60e1-464e-b2b3-9c941bd0062b",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a3155e04-e243-486d-adb7-41d72f5ea3bf",
+      "name": "Note",
+      "description": {
+        "content": "ノート関連",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c144bfc-8ff9-49f1-a625-3e7263baff27",
+          "name": "配布ノート設定全項目更新",
+          "request": {
+            "name": "配布ノート設定全項目更新",
+            "description": {
+              "content": "配布ノートの設定をまとめて更新する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-note-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e16d4ec6-abbe-40ac-99fd-7fb7ae28cf98",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": -97286541,\n  \"saveType\": 8,\n  \"title\": \"irure\",\n  \"pageDate\": null,\n  \"openDate\": -72833576,\n  \"expireDate\": 1010994,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"SPEAKER\",\n  \"secureRoomPassword\": \"Duis\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": 11868867,\n      \"name\": \"sint veniam\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -98256987,\n      \"name\": \"Duis adipisicing labore\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": false,\n      \"isLimitUser\": false\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 34604576,\n      \"part\": 0,\n      \"name\": \"ad\"\n    },\n    {\n      \"driveId\": 39701233,\n      \"part\": 0,\n      \"name\": \"adipisicing cupidatat\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 99218472,\n      \"fileName\": \"velit sit incididunt\",\n      \"size\": -80701524\n    },\n    {\n      \"fileId\": 4643084,\n      \"fileName\": \"amet ex ut consectetur\",\n      \"size\": 39875928\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82545b18-3ea4-4d9c-a826-071d31a59f96",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "656c7557-5fff-4afa-adfc-e2c59fc91a92",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0a9a8cc-0b9c-43e1-a456-41297db0b866",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aead75e0-c64e-413b-ae1f-84c0a75136d4",
+          "name": "配布ノート設定更新",
+          "request": {
+            "name": "配布ノート設定更新",
+            "description": {
+              "content": "配布ノートの設定を更新する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-note-base"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "428142b9-58e3-4d8b-b535-44996da58546",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-base"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4fec229-9509-46ea-a679-93d301309cb1",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-base"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c32e138-d64f-496f-8a6e-20962dcbd339",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-base"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23670531-928a-489c-8361-073383587024",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-base"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9cb8c21-7f31-4701-804d-75130aff26bc",
+          "name": "配布先フォルダ設定",
+          "request": {
+            "name": "配布先フォルダ設定",
+            "description": {
+              "content": "配布先フォルダ設定を更新する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-note-folders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27c5b465-a31b-4d9c-9b0d-d977809d6636",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f7e5f8d-e2a7-4340-9249-52e6929b0549",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae24bec3-b606-42be-930b-2bdd0e74f378",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2b232d5-6b97-46f2-bfd9-8e5d1180daff",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2570eb34-d575-4c71-b30e-f0e60e9f3529",
+          "name": "配布ノート権限設定",
+          "request": {
+            "name": "配布ノート権限設定",
+            "description": {
+              "content": "配布ノートの権限を更新する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-note-users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "542efcd0-9655-4139-8560-c132af58b0e7",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7b0c379-7674-494a-b2ce-dd055e14fdc8",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db05e73d-1782-43fb-a378-bf645c7bdb16",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca267979-32d8-43b5-8e10-d7e8f4c163dc",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-note-users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60a0b5e3-dc8c-43a1-a5a4-8385c6c72f94",
+          "name": "配布ノート設定取得",
+          "request": {
+            "name": "配布ノート設定取得",
+            "description": {
+              "content": "配布ノートの設定を取得する。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "get-note"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cartId",
+                  "value": "<integer>",
+                  "description": "(Required) 配布ノートID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c4c35c5-69f8-473c-8ef2-8fb25bece189",
+              "name": "配布ノート設定",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cartId\": 35700676,\n  \"saveType\": 9,\n  \"title\": \"in ea\",\n  \"pageDate\": null,\n  \"openDate\": 13712384,\n  \"expireDate\": -91619027,\n  \"presenterAutoRec\": true,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"enim magna\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": -65320682,\n      \"name\": \"anim proident\",\n      \"role\": \"owner\",\n      \"driveUserType\": 1,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"group\",\n      \"id\": 72053937,\n      \"name\": \"esse velit\",\n      \"role\": \"owner\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 81581963,\n      \"part\": 1,\n      \"name\": \"cupidatat\"\n    },\n    {\n      \"driveId\": -51888387,\n      \"part\": 0,\n      \"name\": \"ea\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": 32732624,\n      \"fileName\": \"ea pariatur reprehenderit ad adipisicing\",\n      \"size\": 5345579\n    },\n    {\n      \"fileId\": -53992375,\n      \"fileName\": \"enim ex\",\n      \"size\": 72477061\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1b11a67-7dd5-4196-a40b-af5318f754ce",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3636a499-7c11-4364-80fb-da46a2e16b88",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "008f1643-6281-496b-ac26-43b40f705dc6",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "get-note"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "7a615c2c-9372-4356-af44-b9e4a421eb5c",
+          "name": "ノート配布",
+          "request": {
+            "name": "ノート配布",
+            "description": {
+              "content": "ノートを配布する。ノート配布時に配布ファイルの変換を行うので変換状態を取得するためのIDを返す。",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "room-start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cartId",
+                  "value": "<integer>",
+                  "description": "(Required) ノート配布したいカートID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8e9035a-7748-4a2a-b427-2a4a0fb2b571",
+              "name": "変換IDリスト",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  8103133,\n  84680012\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92bb2d36-fc83-4982-a975-327e0bc144f5",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9c445ed-b0ec-43e1-9ae7-8d044eaf8b2b",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4792d9f4-7084-43cb-b3a7-d0dc70ddca06",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "26cc5f64-1b82-4d31-9236-18b3d44c07a1",
+          "name": "ノート変換状態",
+          "request": {
+            "name": "ノート変換状態",
+            "description": {
+              "content": "ノート変換状態",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "room-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "convertId",
+                  "value": "<integer>",
+                  "description": "(Required) 変換ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "<Bearer Token>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da6a905e-f273-4edf-a7d2-8c729a681c44",
+              "name": "変換状態",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "convertId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"convertId\": 29246487,\n  \"status\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "605e3ec3-ea1e-4d25-980d-eb30102153a2",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "convertId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41212692-8729-410a-9246-2dd82b4e8c64",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "convertId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a781cfa4-46db-457e-aba6-b7b701a1d40f",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "room-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "convertId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e680fc5b-6f1b-4765-8b34-3d38b76e6622",
+      "name": "疎通確認",
+      "request": {
+        "name": "疎通確認",
+        "description": {
+          "content": "APIキーが有効か確認に使用。\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "test"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "<Bearer Token>"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "c25598c4-9126-4d1f-8568-d4dc7ac2edac",
+          "name": "疎通確認",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"userId\": 96323768\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "c8dfa86b-adbd-4278-86b4-6dc19786d5c2",
+          "name": "Bad Request - 不正パラメータ\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "9f07f25f-c121-4a20-a3ab-50a7cae29c91",
+          "name": "Unauthorized - 認証エラー\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "018fbe30-2a4b-4cd9-b4e2-e7c2640c33e0",
+          "name": "Internal Sever Error - 不測のエラー\n",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://mps102-dev.metamoji.com/serverapi/external-api/v1/coordinator",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea0fed48-3008-4a17-bfb2-76f4d721d79e",
+    "name": "コーディネータAPI仕様",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "### 1. はじめに\n- APIはサーバーバージョン8以上の法人が利用できる。\n- APIの使用は権限を持つユーザに限定される。ユーザ権限は下記URLのユーザー管理で付与する。\n- [http://mps102-dev.metamoji.com/mmjeditor2/usradm/ja/userlist.html](http://mps102-dev.metamoji.com/mmjeditor2/usradm/ja/userlist.html)\n- 権限付与されたユーザは下記URLからAPIキーを発行できる。発行したキーはbearerトークンとして利用する。\n- [http://mps102-dev.metamoji.com/mmjCloudWeb/mypage/ja/externalapikey.html](http://mps102-dev.metamoji.com/mmjCloudWeb/mypage/ja/externalapikey.html)\n\n### 2. コーディネータ\n- ノートを作成し、配布する機能。\n- 設定可能な項目はクラウドツールのコーディネータ機能に準ずる。\n- 以下の順にAPIを実行することでノートを配布する。1 - 3はまとめて\"/updatenoteall\"で実行できる。\n  1. \"/updatenotebase\" - 配布ノート設定\n  2. \"/updatenotefolders\" - 配布先フォルダ設定\n  3. \"/updatenoteusers\" - 配布ノート権限設定\n  4. \"/addfile\" - 配布ファイル追加\n  5. \"/roomstart\" - ノート配布\n- 配布先フォルダやノート権限の設定に必要な情報はフォルダ関連APIで取得できる。\n",
+      "type": "text/plain"
+    }
+  }
+}

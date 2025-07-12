@@ -1,0 +1,4923 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "90f5af90-0d42-4480-991a-b64f2b042146"
+    },
+    "item": [
+      {
+        "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae",
+        "name": "疎通確認",
+        "request": {
+          "name": "疎通確認",
+          "description": {
+            "content": "APIキーが有効か確認に使用。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "test"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "c141b774-d36d-49fe-9cdf-c8bcc094cf0b",
+            "name": "疎通確認",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "test"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"userId\": -45391032\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "9301edc7-8215-45d3-bdaa-c3cb337c65e6",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "test"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "10f65111-395f-49ed-873f-352503822d49",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "test"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "ede5c198-868b-4e78-b13f-af66447c4531",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "test"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "c2953b6d-048f-4c2a-9221-58700755d073",
+        "name": "フォルダ一覧",
+        "request": {
+          "name": "フォルダ一覧",
+          "description": {
+            "content": "フォルダ一覧を配列で返す。\nパラメータにdriveIdを指定しない場合、トップレベルのフォルダ一覧を取得する。\ndriveIdを指定した場合、そのフォルダに含まれるフォルダを取得する。\n指定したフォルダにタグフォルダが含まれる場合、tagListにツリーで出力される。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "get-folders"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "対象フォルダ内のフォルダを取得する場合に指定する。\n指定しない場合、トップレベルのフォルダ一覧を取得する。\n",
+                  "type": "text/plain"
+                },
+                "key": "driveId",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "beabda2f-bcbd-4bd5-815d-43ccef1ffb12",
+            "name": "フォルダ一覧",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"driveId\": 71709103,\n  \"folderList\": [\n    {\n      \"driveId\": 50267670,\n      \"part\": 0,\n      \"name\": \"dolor commodo ea \"\n    },\n    {\n      \"driveId\": 86580782,\n      \"part\": 1,\n      \"name\": \"ex mollit irure laboris\"\n    }\n  ],\n  \"tagList\": [\n    {\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        }\n      ],\n      \"folderName\": \"consequat\",\n      \"tag\": [\n        \"nostrud eiusmod deserunt\",\n        \"velit incididunt dolor commodo\"\n      ]\n    },\n    {\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/TagFolder detected>\"\n        }\n      ],\n      \"folderName\": \"dolor Excepteur sed\",\n      \"tag\": [\n        \"velit sunt\",\n        \"mollit ad\"\n      ]\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "fbf8286c-1516-4ae3-9d93-89ffe32746d2",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "018131e3-9d2f-4a4a-bdf5-02b22a259ea1",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7f5c20ec-9e3e-4e9e-8e1b-5d4999326372",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "83f83fc5-bd35-4fce-ab7b-3453304f2810",
+        "name": "フォルダにアクセス可能なユーザ一覧",
+        "request": {
+          "name": "フォルダにアクセス可能なユーザ一覧",
+          "description": {
+            "content": "フォルダにアクセス可能なユーザ一覧。個人、グループ、チームの単位で取得。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "get-folder-users"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) ユーザ一覧を取得したいフォルダのID",
+                  "type": "text/plain"
+                },
+                "key": "driveId",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) ユーザ一覧の取得開始位置",
+                  "type": "text/plain"
+                },
+                "key": "offset",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) ユーザ一覧の取得上限数",
+                  "type": "text/plain"
+                },
+                "key": "limit",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "61d7c69c-fecd-4752-b5a1-54fef2324987",
+            "name": "ユーザリスト",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folder-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[\n  {\n    \"userType\": \"team\",\n    \"id\": -61147644,\n    \"name\": \"laboris sunt consectetur adipisicing\",\n    \"role\": \"owner\",\n    \"driveUserType\": 4,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": true\n  },\n  {\n    \"userType\": \"group\",\n    \"id\": 57212697,\n    \"name\": \"cupidatat ut tempor sed\",\n    \"role\": \"visitor\",\n    \"driveUserType\": 3,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": true\n  }\n]",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7a58fb2e-8e71-48de-bb59-db48d821b12d",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folder-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "01111d34-03f2-4510-b699-58507f6aeac7",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folder-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "6979a8cb-22b0-4807-9105-7f9d4fb57404",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-folder-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "938fcd74-0115-45f9-96fa-6464418ded8e",
+        "name": "ユーザ、グループ、チーム一覧",
+        "request": {
+          "name": "ユーザ、グループ、チーム一覧",
+          "description": {
+            "content": "関連するユーザ、グループ、チームの情報を取得する。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "get-users"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) 個人、グループ、チーム判定:\n  * 'user' - 個人\n  * 'group' - グループ\n  * 'team' - チーム\n",
+                  "type": "text/plain"
+                },
+                "key": "userType",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "ユーザ一覧の取得開始位置。\nuserType=userの場合のみ必須で有効となり、それ以外では無視される。\n",
+                  "type": "text/plain"
+                },
+                "key": "offset",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "ユーザ一覧の取得上限数。\nuserType=userの場合のみ必須で有効となり、それ以外では無視される。\n",
+                  "type": "text/plain"
+                },
+                "key": "limit",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "d83ba24a-aed5-4fd4-b510-7d3119689b00",
+            "name": "ユーザリスト",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "userType",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[\n  {\n    \"userType\": \"team\",\n    \"id\": -61147644,\n    \"name\": \"laboris sunt consectetur adipisicing\",\n    \"role\": \"owner\",\n    \"driveUserType\": 4,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": true\n  },\n  {\n    \"userType\": \"group\",\n    \"id\": 57212697,\n    \"name\": \"cupidatat ut tempor sed\",\n    \"role\": \"visitor\",\n    \"driveUserType\": 3,\n    \"isOutsideUser\": false,\n    \"isLimitUser\": true\n  }\n]",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "076ab6de-9ec7-4672-b439-791a7fa92349",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "userType",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "2f03ef2c-ed75-4f3a-a0fb-ee78e605ef5c",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "userType",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "3d7be7c4-3e5f-45eb-ad03-dde93bb90bd5",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "userType",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "offset",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "limit",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "fd4ebf26-14b2-45c6-bf88-1f8de4089956",
+        "name": "フォルダ確認",
+        "request": {
+          "name": "フォルダ確認",
+          "description": {
+            "content": "フォルダが存在することを確認する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "exists-folder"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) 対象フォルダ",
+                  "type": "text/plain"
+                },
+                "key": "driveId",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": {
+                  "content": "タグフォルダを対象とする場合指定する。\n",
+                  "type": "text/plain"
+                },
+                "key": "tagList",
+                "value": "<string>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "f485a302-88a8-45b1-981f-2432c19e40cd",
+            "name": "フォルダの有無",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "exists-folder"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "tagList",
+                    "value": "tag"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"exists\": false\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "627a6307-d998-4fa8-9d5e-4ac95657769f",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "exists-folder"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "tagList",
+                    "value": "tag"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "92aa861e-a89d-4b51-b169-3217c8977d0e",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "exists-folder"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "tagList",
+                    "value": "tag"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "e12782d7-5fcd-4bf8-b4bd-32ed01695293",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "exists-folder"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "driveId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "tagList",
+                    "value": "tag"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "9f998cc8-750d-452b-8ef6-06c3b47f3858",
+        "name": "配布ノート設定全項目更新",
+        "request": {
+          "name": "配布ノート設定全項目更新",
+          "description": {
+            "content": "配布ノートの設定をまとめて更新する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "update-note-all"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "9523deec-b890-44be-8c88-3d6b743df022",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-all"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 45012987,\n  \"saveType\": 6,\n  \"title\": \"esse non in\",\n  \"pageDate\": null,\n  \"openDate\": 45449041,\n  \"expireDate\": -22991628,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"WRITER\",\n  \"useSendCommand\": \"ALL\",\n  \"secureRoomPassword\": \"veniam\",\n  \"userList\": [\n    {\n      \"userType\": \"user\",\n      \"id\": 99128051,\n      \"name\": \"nulla proident aute irure esse\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": false,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"user\",\n      \"id\": -41050582,\n      \"name\": \"cons\",\n      \"role\": \"null\",\n      \"driveUserType\": 4,\n      \"isOutsideUser\": false,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 20930350,\n      \"part\": 1,\n      \"name\": \"ipsum\"\n    },\n    {\n      \"driveId\": 58995755,\n      \"part\": 0,\n      \"name\": \"in ea ipsum\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -70219353,\n      \"fileName\": \"est nulla do\",\n      \"size\": -81964019\n    },\n    {\n      \"fileId\": -44708844,\n      \"fileName\": \"Lorem ea consequat dolor\",\n      \"size\": -76446712\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "fc609162-7202-4e10-bbf9-bc09f3d1b0ac",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-all"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "cde928af-1dce-4ba3-b48f-3c318fc1b27e",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-all"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "a53b70ec-2cbe-4ec9-b96b-753f1b1a5745",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-all"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "1e322f34-7716-48de-aef6-ecc6667516e0",
+        "name": "配布ノート設定更新",
+        "request": {
+          "name": "配布ノート設定更新",
+          "description": {
+            "content": "配布ノートの設定を更新する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "update-note-base"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "f2e8f067-71ec-4e3e-8805-edc1b8a4799b",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-base"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "36ad098f-27a1-4e31-8ada-2dd81bc1ae27",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-base"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "4f7dabc4-f488-4381-8a44-d56c0588196d",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-base"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7cb64a4f-d5f0-4961-a3ab-f96acf17991a",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-base"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"saveType\": \"<integer>\",\n  \"cartId\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"pageDate\": \"<integer>\",\n  \"openDate\": \"<integer>\",\n  \"expireDate\": \"<integer>\",\n  \"presenterAutoRec\": \"<boolean>\",\n  \"useVoiceRecorder\": \"<string>\",\n  \"useSendCommand\": \"<string>\",\n  \"secureRoomPassword\": \"<string>\"\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "91ac5049-dc30-41a3-9e60-93b890beae89",
+        "name": "配布先フォルダ設定",
+        "request": {
+          "name": "配布先フォルダ設定",
+          "description": {
+            "content": "配布先フォルダ設定を更新する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "update-note-folders"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "ff154e94-c63e-43b8-8478-71ee2bd03838",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "12a8167c-f634-431e-8039-7deeff7be271",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "a013d801-c643-4a66-bd5a-b166cc2fc2f7",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "05060283-ddd1-4f6a-9e14-3f19227951c5",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-folders"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"folderList\": [\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"driveId\": \"<integer>\",\n      \"tagList\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "3c0c293a-3c19-4e35-bb0e-de53e32b3f18",
+        "name": "配布ノート権限設定",
+        "request": {
+          "name": "配布ノート権限設定",
+          "description": {
+            "content": "配布ノートの権限を更新する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "update-note-users"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7e12b265-cee1-450e-bc36-c407b32c4c8f",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "742a9306-ac0f-4f56-be44-92049dc27ce9",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "ff10247f-0676-4d52-86af-b55c46db9ee5",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "9d964b2a-aaf1-4a40-8fd5-1fb19481fbcf",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "update-note-users"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"userList\": [\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    },\n    {\n      \"userType\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"role\": \"<string>\"\n    }\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "afcb6897-629b-4b59-af9e-d21c3c6f8ce4",
+        "name": "配布ノート設定取得",
+        "request": {
+          "name": "配布ノート設定取得",
+          "description": {
+            "content": "配布ノートの設定を取得する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "get-note"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) 配布ノートID",
+                  "type": "text/plain"
+                },
+                "key": "cartId",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "15f702a4-be1c-4a2b-8ab0-6061cc52e80d",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-note"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "9f67514d-dcf0-4f4a-b3ec-57a5bd2bf3c6",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-note"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "4c5edb16-a06d-4948-ab42-4fd109b7969b",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-note"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "06a150a8-c99e-494d-a90a-369b6ee91595",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "get-note"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "8c023e24-63af-4fef-aa64-b4f1a5de2ea7",
+        "name": "配布ファイル追加",
+        "request": {
+          "name": "配布ファイル追加",
+          "description": {
+            "content": "配布ファイルをアップロードし、指定のノートに割り当てる。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "add-file"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "multipart/form-data"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "formdata",
+            "formdata": [
+              {
+                "description": {
+                  "content": "(Required) 配布ノートID",
+                  "type": "text/plain"
+                },
+                "key": "cartId",
+                "value": "<integer>",
+                "type": "text"
+              },
+              {
+                "description": {
+                  "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                  "type": "text/plain"
+                },
+                "key": "coordinateMode",
+                "value": "<integer>",
+                "type": "text"
+              },
+              {
+                "description": {
+                  "content": "(Required) アップロードファイル",
+                  "type": "text/plain"
+                },
+                "key": "file",
+                "value": "[]",
+                "type": "text"
+              }
+            ]
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "799e0141-94dd-42ff-97de-4eef4988e22b",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "add-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "description": {
+                      "content": "(Required) 配布ノートID",
+                      "type": "text/plain"
+                    },
+                    "key": "cartId",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                      "type": "text/plain"
+                    },
+                    "key": "coordinateMode",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) アップロードファイル",
+                      "type": "text/plain"
+                    },
+                    "key": "file",
+                    "value": "[]",
+                    "type": "text"
+                  }
+                ]
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "af347341-9204-475d-b736-bca23d823528",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "add-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "description": {
+                      "content": "(Required) 配布ノートID",
+                      "type": "text/plain"
+                    },
+                    "key": "cartId",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                      "type": "text/plain"
+                    },
+                    "key": "coordinateMode",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) アップロードファイル",
+                      "type": "text/plain"
+                    },
+                    "key": "file",
+                    "value": "[]",
+                    "type": "text"
+                  }
+                ]
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "2a2cb495-1b78-4a39-9ea6-9153b45b6c29",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "add-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "description": {
+                      "content": "(Required) 配布ノートID",
+                      "type": "text/plain"
+                    },
+                    "key": "cartId",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                      "type": "text/plain"
+                    },
+                    "key": "coordinateMode",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) アップロードファイル",
+                      "type": "text/plain"
+                    },
+                    "key": "file",
+                    "value": "[]",
+                    "type": "text"
+                  }
+                ]
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "3afcafc5-cc52-41a3-88bf-cc82b4f8f563",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "add-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "description": {
+                      "content": "(Required) 配布ノートID",
+                      "type": "text/plain"
+                    },
+                    "key": "cartId",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) 配布形式:\n  * 0 - すべての資料をまとめてひとつのノートを作る\n  * 1 - 資料ごとにノートを作る\n (This can only be one of 0,1)",
+                      "type": "text/plain"
+                    },
+                    "key": "coordinateMode",
+                    "value": "<integer>",
+                    "type": "text"
+                  },
+                  {
+                    "description": {
+                      "content": "(Required) アップロードファイル",
+                      "type": "text/plain"
+                    },
+                    "key": "file",
+                    "value": "[]",
+                    "type": "text"
+                  }
+                ]
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "7049b12e-384f-4494-a4bf-dbb4289ed482",
+        "name": "ファイル削除",
+        "request": {
+          "name": "ファイル削除",
+          "description": {
+            "content": "配布ノートに割り当てたファイルを削除する。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "delete-file"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "2511d9a8-e266-4351-8aa2-51f0393a75ea",
+            "name": "配布ノート設定",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "delete-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"cartId\": 6866436,\n  \"saveType\": 6,\n  \"title\": \"in exercitation amet aute\",\n  \"pageDate\": null,\n  \"openDate\": -8143613,\n  \"expireDate\": -50273339,\n  \"presenterAutoRec\": false,\n  \"useVoiceRecorder\": \"OWNER\",\n  \"useSendCommand\": \"WRITER\",\n  \"secureRoomPassword\": \"voluptate\",\n  \"userList\": [\n    {\n      \"userType\": \"group\",\n      \"id\": 81021498,\n      \"name\": \"nisi ea labore nostrud\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 0,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    },\n    {\n      \"userType\": \"team\",\n      \"id\": -83852877,\n      \"name\": \"Lorem nisi fugiat consequat tempor\",\n      \"role\": \"visitor\",\n      \"driveUserType\": 2,\n      \"isOutsideUser\": true,\n      \"isLimitUser\": true\n    }\n  ],\n  \"folderList\": [\n    {\n      \"driveId\": 46616963,\n      \"part\": 1,\n      \"name\": \"et officia ut cu\"\n    },\n    {\n      \"driveId\": 60520655,\n      \"part\": 0,\n      \"name\": \"adipisicing consectetur Ut commodo\"\n    }\n  ],\n  \"fileList\": [\n    {\n      \"fileId\": -87098784,\n      \"fileName\": \"veniam\",\n      \"size\": -61357998\n    },\n    {\n      \"fileId\": -29307210,\n      \"fileName\": \"dolor\",\n      \"size\": -30156142\n    }\n  ]\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "f05c7882-20a6-4ed1-8bc6-b8f18efb9827",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "delete-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "f4a0248c-8b7d-4ad2-959b-95ec9891ca28",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "delete-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "c94d7de5-e1e5-4a97-b7b6-5442f66a3fa9",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "delete-file"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cartId\": \"<integer>\",\n  \"fileIdList\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              }
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": [],
+        "protocolProfileBehavior": {
+          "disableBodyPruning": true
+        }
+      },
+      {
+        "id": "2370ed12-3254-42ed-a867-0635a84b9c10",
+        "name": "ノート配布",
+        "request": {
+          "name": "ノート配布",
+          "description": {
+            "content": "ノートを配布する。ノート配布時に配布ファイルの変換を行うので変換状態を取得するためのIDを返す。",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "room-start"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) ノート配布したいカートID",
+                  "type": "text/plain"
+                },
+                "key": "cartId",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "0546a093-54b3-4617-853b-d05ab3d8d58b",
+            "name": "変換IDリスト",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-start"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[\n  -8375763,\n  -83248756\n]",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "819cb83d-8803-4e97-a0ba-b26eb55deb54",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-start"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "0e59fa0a-62b6-4925-822a-8de46a1e3944",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-start"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7a516ae0-b3d2-475b-8ee6-146839e16a00",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-start"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "cartId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "c8c65433-a86c-4848-86b2-3cafcea2a82f",
+        "name": "ノート変換状態",
+        "request": {
+          "name": "ノート変換状態",
+          "description": {
+            "content": "ノート変換状態",
+            "type": "text/plain"
+          },
+          "url": {
+            "path": [
+              "room-status"
+            ],
+            "host": [
+              "{{baseUrl}}"
+            ],
+            "query": [
+              {
+                "disabled": false,
+                "description": {
+                  "content": "(Required) 変換ID",
+                  "type": "text/plain"
+                },
+                "key": "convertId",
+                "value": "<integer>"
+              }
+            ],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": [
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "8ba17776-73ef-49cf-8178-ff0092b4851c",
+            "name": "変換状態",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-status"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "convertId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "OK",
+            "code": 200,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"convertId\": -15750874,\n  \"status\": 4\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "7a92b2b7-9657-4695-88a7-2a6b799872c8",
+            "name": "Bad Request - 不正パラメータ\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-status"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "convertId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Bad Request",
+            "code": 400,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "0e53ee90-e8c9-4c75-91e9-570de17790af",
+            "name": "Unauthorized - 認証エラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-status"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "convertId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Unauthorized",
+            "code": 401,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+            "cookie": []
+          },
+          {
+            "_": {
+              "postman_previewlanguage": "json"
+            },
+            "id": "50a786c6-e8d3-47d7-aeb1-3fe68f722a7e",
+            "name": "Internal Sever Error - 不測のエラー\n",
+            "originalRequest": {
+              "url": {
+                "path": [
+                  "room-status"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [
+                  {
+                    "key": "convertId",
+                    "value": "<integer>"
+                  }
+                ],
+                "variable": []
+              },
+              "header": [
+                {
+                  "description": {
+                    "content": "Added as a part of security scheme: bearer",
+                    "type": "text/plain"
+                  },
+                  "key": "Authorization",
+                  "value": "Bearer <token>"
+                }
+              ],
+              "method": "GET",
+              "body": {}
+            },
+            "status": "Internal Server Error",
+            "code": 500,
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+            "cookie": []
+          }
+        ],
+        "event": []
+      }
+    ],
+    "event": [],
+    "variable": [
+      {
+        "type": "string",
+        "value": "https://mps102-dev.metamoji.com/serverapi/external-api/v1/coordinator",
+        "key": "baseUrl"
+      }
+    ],
+    "info": {
+      "_postman_id": "90f5af90-0d42-4480-991a-b64f2b042146",
+      "name": "コーディネータAPI仕様",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": {
+        "content": "### 1. はじめに\n- APIはサーバーバージョン8以上の法人が利用できる。\n- APIの使用は権限を持つユーザに限定される。ユーザ権限は下記URLのユーザー管理で付与する。\n- [http://mps102-dev.metamoji.com/mmjeditor2/usradm/ja/userlist.html](http://mps102-dev.metamoji.com/mmjeditor2/usradm/ja/userlist.html)\n- 権限付与されたユーザは下記URLからAPIキーを発行できる。発行したキーはbearerトークンとして利用する。\n- [http://mps102-dev.metamoji.com/mmjCloudWeb/mypage/ja/externalapikey.html](http://mps102-dev.metamoji.com/mmjCloudWeb/mypage/ja/externalapikey.html)\n\n### 2. コーディネータ\n- ノートを作成し、配布する機能。\n- 設定可能な項目はクラウドツールのコーディネータ機能に準ずる。\n- 以下の順にAPIを実行することでノートを配布する。1 - 3はまとめて\"/updatenoteall\"で実行できる。\n  1. \"/updatenotebase\" - 配布ノート設定\n  2. \"/updatenotefolders\" - 配布先フォルダ設定\n  3. \"/updatenoteusers\" - 配布ノート権限設定\n  4. \"/addfile\" - 配布ファイル追加\n  5. \"/roomstart\" - ノート配布\n- 配布先フォルダやノート権限の設定に必要な情報はフォルダ関連APIで取得できる。\n",
+        "type": "text/plain"
+      }
+    }
+  },
+  "environment": {
+    "_": {
+      "postman_variable_scope": "environment",
+      "postman_exported_at": "2025-06-23T00:00:00.000Z",
+      "postman_exported_using": "Postman/10.0.0"
+    },
+    "id": "coord-api-env",
+    "name": "Coordinator API Env",
+    "values": [
+      {
+        "type": "any",
+        "value": "https://mps102-dev.metamoji.com/serverapi/external-api/v1/coordinator",
+        "key": "baseUrl"
+      },
+      {
+        "type": "any",
+        "value": "eyJ1c2VySWQiOjQ2NTQ0ODcxMDEsImtleSI6IllCSHBOS1Jrbnh2ZFBOZEJCaTZKTm5oRCJ9",
+        "key": "token"
+      }
+    ]
+  },
+  "globals": {
+    "id": "d30f1880-d4da-4d40-8948-44898fc8810a",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 43.333333333333336,
+      "responseMin": 19,
+      "responseMax": 89,
+      "responseSd": 32.31442746239244,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1750669808978,
+      "completed": 1750669809150
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 1,
+          "cycles": 3,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "e5e5b2a5-3a96-481f-ae57-bc2a93af97c3",
+          "httpRequestId": "ffc73f5c-3fd2-4ede-be4d-5aede5d232c9"
+        },
+        "item": {
+          "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae",
+          "name": "疎通確認",
+          "request": {
+            "name": "疎通確認",
+            "description": {
+              "content": "APIキーが有効か確認に使用。\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "any",
+                  "value": "<Bearer Token>",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "c141b774-d36d-49fe-9cdf-c8bcc094cf0b",
+              "name": "疎通確認",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": -45391032\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "9301edc7-8215-45d3-bdaa-c3cb337c65e6",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "10f65111-395f-49ed-873f-352503822d49",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "ede5c198-868b-4e78-b13f-af66447c4531",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": []
+            }
+          ],
+          "event": []
+        },
+        "request": {
+          "name": "疎通確認",
+          "description": {
+            "content": "APIキーが有効か確認に使用。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "serverapi",
+              "external-api",
+              "v1",
+              "coordinator",
+              "test"
+            ],
+            "host": [
+              "mps102-dev",
+              "metamoji",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer <Bearer Token>",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.29.0",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "0616f555-df6c-4855-8703-48edb0d7b326",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "mps102-dev.metamoji.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": {
+          "id": "2c42cb7c-c4e7-4ef2-948c-054ba5c9c189",
+          "status": "401",
+          "code": 401,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 23 Jun 2025 09:10:10 GMT"
+            },
+            {
+              "key": "Content-Length",
+              "value": "41"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALB=SO1ZzFE4qP0v+8+db/cIzJZYIJhh9knIaeb8Z0rscsz04asoCWprzPQVbmY9O6Lxp2zAHBQRYsl5/t18FlFnGZd59fQn5L3gpE6bsyh3vRb4yJKAQZRTUUbfo2zF; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALBCORS=SO1ZzFE4qP0v+8+db/cIzJZYIJhh9knIaeb8Z0rscsz04asoCWprzPQVbmY9O6Lxp2zAHBQRYsl5/t18FlFnGZd59fQn5L3gpE6bsyh3vRb4yJKAQZRTUUbfo2zF; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/; SameSite=None; Secure"
+            },
+            {
+              "key": "Server",
+              "value": "Apache"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "Content-Security-Policy-Report-Only",
+              "value": "default-src 'self' 'unsafe-inline'; report-uri http://ec2-18-180-151-186.ap-northeast-1.compute.amazonaws.com/CSPReport/report"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              34,
+              69,
+              52,
+              48,
+              49,
+              34,
+              44,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              85,
+              110,
+              97,
+              117,
+              116,
+              104,
+              111,
+              114,
+              105,
+              122,
+              101,
+              100,
+              34,
+              125,
+              10
+            ]
+          },
+          "cookie": [],
+          "responseTime": 89,
+          "responseSize": 41
+        },
+        "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae"
+      },
+      {
+        "cursor": {
+          "ref": "d2f33183-19b4-4479-9f2c-027249a1bbce",
+          "length": 1,
+          "cycles": 3,
+          "position": 0,
+          "iteration": 1,
+          "cr": true,
+          "httpRequestId": "5209f4bf-3fcd-4622-a361-c000d1237a14"
+        },
+        "item": {
+          "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae",
+          "name": "疎通確認",
+          "request": {
+            "name": "疎通確認",
+            "description": {
+              "content": "APIキーが有効か確認に使用。\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "any",
+                  "value": "<Bearer Token>",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "c141b774-d36d-49fe-9cdf-c8bcc094cf0b",
+              "name": "疎通確認",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": -45391032\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "9301edc7-8215-45d3-bdaa-c3cb337c65e6",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "10f65111-395f-49ed-873f-352503822d49",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "ede5c198-868b-4e78-b13f-af66447c4531",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": []
+            }
+          ],
+          "event": []
+        },
+        "request": {
+          "name": "疎通確認",
+          "description": {
+            "content": "APIキーが有効か確認に使用。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "serverapi",
+              "external-api",
+              "v1",
+              "coordinator",
+              "test"
+            ],
+            "host": [
+              "mps102-dev",
+              "metamoji",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer <Bearer Token>",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.29.0",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "04c19832-582f-4671-91d3-6163b68cc594",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "mps102-dev.metamoji.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Cookie",
+              "value": "AWSALB=SO1ZzFE4qP0v+8+db/cIzJZYIJhh9knIaeb8Z0rscsz04asoCWprzPQVbmY9O6Lxp2zAHBQRYsl5/t18FlFnGZd59fQn5L3gpE6bsyh3vRb4yJKAQZRTUUbfo2zF; AWSALBCORS=SO1ZzFE4qP0v+8+db/cIzJZYIJhh9knIaeb8Z0rscsz04asoCWprzPQVbmY9O6Lxp2zAHBQRYsl5/t18FlFnGZd59fQn5L3gpE6bsyh3vRb4yJKAQZRTUUbfo2zF",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": {
+          "id": "0e6215fb-24dd-4945-b39f-b391376b84fa",
+          "status": "401",
+          "code": 401,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 23 Jun 2025 09:10:10 GMT"
+            },
+            {
+              "key": "Content-Length",
+              "value": "41"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALB=+NsYUQm30RCZCN7rLINZ16pRBLVIKNXtHq4sMLM5OpgwYZaMSwd0YL3UoqfiUFW3NqCvPHl2x4LsCCJkgrLwX9gehAe7oM0vWkzp+R1sfY+GQDnM1BVJRHMNGiWh; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALBCORS=+NsYUQm30RCZCN7rLINZ16pRBLVIKNXtHq4sMLM5OpgwYZaMSwd0YL3UoqfiUFW3NqCvPHl2x4LsCCJkgrLwX9gehAe7oM0vWkzp+R1sfY+GQDnM1BVJRHMNGiWh; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/; SameSite=None; Secure"
+            },
+            {
+              "key": "Server",
+              "value": "Apache"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "Content-Security-Policy-Report-Only",
+              "value": "default-src 'self' 'unsafe-inline'; report-uri http://ec2-18-180-151-186.ap-northeast-1.compute.amazonaws.com/CSPReport/report"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              34,
+              69,
+              52,
+              48,
+              49,
+              34,
+              44,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              85,
+              110,
+              97,
+              117,
+              116,
+              104,
+              111,
+              114,
+              105,
+              122,
+              101,
+              100,
+              34,
+              125,
+              10
+            ]
+          },
+          "cookie": [],
+          "responseTime": 22,
+          "responseSize": 41
+        },
+        "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae"
+      },
+      {
+        "cursor": {
+          "ref": "f208c051-e9cd-4f89-8dad-4d99ebb756c2",
+          "length": 1,
+          "cycles": 3,
+          "position": 0,
+          "iteration": 2,
+          "cr": true,
+          "httpRequestId": "1f773739-502b-48e6-ba4f-8ac88f48c43c"
+        },
+        "item": {
+          "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae",
+          "name": "疎通確認",
+          "request": {
+            "name": "疎通確認",
+            "description": {
+              "content": "APIキーが有効か確認に使用。\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "type": "any",
+                  "value": "<Bearer Token>",
+                  "key": "token"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "c141b774-d36d-49fe-9cdf-c8bcc094cf0b",
+              "name": "疎通確認",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": -45391032\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "9301edc7-8215-45d3-bdaa-c3cb337c65e6",
+              "name": "Bad Request - 不正パラメータ\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E400\",\n  \"meesage\": \"validation error\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "10f65111-395f-49ed-873f-352503822d49",
+              "name": "Unauthorized - 認証エラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E401\",\n  \"meesage\": \"Unauthorized\"\n}",
+              "cookie": []
+            },
+            {
+              "_": {
+                "postman_previewlanguage": "json"
+              },
+              "id": "ede5c198-868b-4e78-b13f-af66447c4531",
+              "name": "Internal Sever Error - 不測のエラー\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"E500\",\n  \"meesage\": \"internal server error\"\n}",
+              "cookie": []
+            }
+          ],
+          "event": []
+        },
+        "request": {
+          "name": "疎通確認",
+          "description": {
+            "content": "APIキーが有効か確認に使用。\n",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "serverapi",
+              "external-api",
+              "v1",
+              "coordinator",
+              "test"
+            ],
+            "host": [
+              "mps102-dev",
+              "metamoji",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer <Bearer Token>",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.29.0",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "39caf215-1286-4a4c-bc9a-e7a5d93b8ae6",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "mps102-dev.metamoji.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Cookie",
+              "value": "AWSALB=+NsYUQm30RCZCN7rLINZ16pRBLVIKNXtHq4sMLM5OpgwYZaMSwd0YL3UoqfiUFW3NqCvPHl2x4LsCCJkgrLwX9gehAe7oM0vWkzp+R1sfY+GQDnM1BVJRHMNGiWh; AWSALBCORS=+NsYUQm30RCZCN7rLINZ16pRBLVIKNXtHq4sMLM5OpgwYZaMSwd0YL3UoqfiUFW3NqCvPHl2x4LsCCJkgrLwX9gehAe7oM0vWkzp+R1sfY+GQDnM1BVJRHMNGiWh",
+              "system": true
+            }
+          ],
+          "method": "GET",
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "type": "any",
+                "value": "<Bearer Token>",
+                "key": "token"
+              }
+            ]
+          }
+        },
+        "response": {
+          "id": "56db99be-b6cc-4497-a476-ba33b31535d5",
+          "status": "401",
+          "code": 401,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 23 Jun 2025 09:10:10 GMT"
+            },
+            {
+              "key": "Content-Length",
+              "value": "41"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALB=seBOZRGaQHaHzt7fwvAJ0OAG83FbihyUGZPw+/173QitJXCzkjKBiBEC2skxss9Ty50qpn2IP7i1BiigHlWNyKgswmNn12Xa/JTI04IpzLk09nGBKLhFw8tH//Nx; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "AWSALBCORS=seBOZRGaQHaHzt7fwvAJ0OAG83FbihyUGZPw+/173QitJXCzkjKBiBEC2skxss9Ty50qpn2IP7i1BiigHlWNyKgswmNn12Xa/JTI04IpzLk09nGBKLhFw8tH//Nx; Expires=Mon, 30 Jun 2025 09:10:10 GMT; Path=/; SameSite=None; Secure"
+            },
+            {
+              "key": "Server",
+              "value": "Apache"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "X-XSS-Protection",
+              "value": "1; mode=block"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "Content-Security-Policy-Report-Only",
+              "value": "default-src 'self' 'unsafe-inline'; report-uri http://ec2-18-180-151-186.ap-northeast-1.compute.amazonaws.com/CSPReport/report"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              99,
+              111,
+              100,
+              101,
+              34,
+              58,
+              34,
+              69,
+              52,
+              48,
+              49,
+              34,
+              44,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              85,
+              110,
+              97,
+              117,
+              116,
+              104,
+              111,
+              114,
+              105,
+              122,
+              101,
+              100,
+              34,
+              125,
+              10
+            ]
+          },
+          "cookie": [],
+          "responseTime": 19,
+          "responseSize": 41
+        },
+        "id": "1ce49d0e-6d7e-4196-8ce7-de0f973546ae"
+      }
+    ],
+    "transfers": {
+      "responseTotal": 123
+    },
+    "failures": [],
+    "error": null
+  }
+}
