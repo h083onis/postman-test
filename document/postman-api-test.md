@@ -1,6 +1,7 @@
 # Postman を活用したAPIテストの説明
 
 ## 目次
+
 - [Postman を活用したAPIテストの説明](#postman-を活用したapiテストの説明)
   - [目次](#目次)
   - [Postman とは](#postman-とは)
@@ -15,9 +16,10 @@
     - [変数の使用](#変数の使用)
     - [Runner を使った自動実行](#runner-を使った自動実行)
   - [MetaMoji Coordinator のテスト](#metamoji-coordinator-のテスト)
-
+  - [無料と有料の比較](#無料と有料の比較)
 
 ## Postman とは
+
 Postman とは Restful API や GraphQLなどの Web API を開発・テスト・ドキュメント化・モニタリングするためのプラットフォームである。以下の特徴を持ち、API テストの効率化やチームでの作業を円滑に実施することが可能だ。
 
 - 直観的なユーザーインターフェース
@@ -35,7 +37,6 @@ Postman とは Restful API や GraphQLなどの Web API を開発・テスト・
 - 自動化とCI/CD連携
   
   Postman CLI を使うことで、コマンドライン上や CI 環境（GitHub Actions / Jenkins 等）でコレクションを実行し、テストパイプラインに組み込みできる。
-
 
 ## Postman のインストールと言語設定
 
@@ -58,8 +59,8 @@ General（一般）から Application（アプリケーション）内の Langua
 ![言語設定](./img/lang-ch.png)
 
 ## 基本機能の説明
-Postman を使ったAPIテストの基本機能を説明していく。
-例として、 Postman 内でリクエストをするためのサービスである [Postman Echo](https://learning.postman.com/docs/developer/echo-api/) を使用する。 
+
+Postman を使ったAPIテストの基本機能を Postman 内でリクエストのお試しができるサービス [Postman Echo](https://learning.postman.com/docs/developer/echo-api/) を例として説明する。
 
 ### コレクションの作成
 
@@ -153,6 +154,7 @@ pm.test('JSONスキーマのテスト', function () {
 | 環境 | ローカル開発／テスト／運用など、用途ごとに切り替えて使える変数。アクティブ化できる環境は１つのみ。環境ごとにロールベースのアクセス制御を設定可能。 |
 | データ | 外部 CSV／JSON ファイルから読み込まれ、Newman や Collection Runner 実行時にデータセットを定義する変数。実行中のみ現在の値を保持し、終了後はクリアされる。 |
 | ローカル | リクエストスクリプト内の一時変数で、単一リクエストまたはコレクション実行中のみ有効。全スコープをオーバーライドする値が必要だが、実行後に値を保持したくない場合に適する。 |
+
 > **補足:** 同じ名前の変数が複数のスコープで宣言されている場合、より狭いスコープ（ローカル→データ→環境→コレクション→グローバル）の値が優先される。
 
 
@@ -172,7 +174,6 @@ pm.test('JSONスキーマのテスト', function () {
 2. https://postman-echo.com を環境変数 baseUrl として設定
 
     変数：baseUrl、タイプ：デフォルト、初期値：https://postman-echo.com、現在値：https://postman-echo.com を設定する
-
     ![環境変数の設定](./img/set-env-val.png)
 
 3. リクエストの実行環境を Test に変更
@@ -180,14 +181,12 @@ pm.test('JSONスキーマのテスト', function () {
     右上にある ``環境なし`` と表示されている箇所をクリックし、表示される環境一覧から「Test」を選択する
 
     ![環境の変更](./img/ch-env.png)
-   
 4. リクエストの URL を環境変数に変更
 
     左サイドバーにある ``コレクション`` から「新規リクエスト」をクリックする。
     そして、リクエスト先として記載されている https://postman-echo.com を {{baseUrl}}/post に変更する。
 
     ![環境変数の使用](./img/use-env-val.png)
-   
 5. リクエストを実行し、レスポンスを確認
 
     ``送信`` をクリックし、リクエストを実行する。
@@ -196,8 +195,8 @@ pm.test('JSONスキーマのテスト', function () {
 
     ![環境変数を使った実行](./img/val-used-result.png)
 
-  
 ### Runner を使った自動実行
 
-
 ## MetaMoji Coordinator のテスト
+
+## 無料と有料の比較
