@@ -7,7 +7,6 @@
 - [Postman のインストールと言語設定](#postman-のインストールと言語設定)
 - [基本機能の説明](#基本機能の説明)
 - [Collection Runner を使った自動実行](#collection-runner-を使った自動実行)
-- [MetaMoji Coordinator のテスト](#metamoji-coordinator-のテスト)
 - [無料と有料の比較](#無料と有料の比較)
 
 # Postman とは
@@ -26,10 +25,6 @@
 
 :[セクション4](section4.md)
 
-# MetaMoji Coordinator のテスト
-
-:[セクション5](section5.md)
-
 # 無料と有料の比較
 
-:[セクション6](section6.md)
+:[セクション6](section5.md)
