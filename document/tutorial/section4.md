@@ -88,7 +88,7 @@ Collection Runner の **Functional** タブでは、選択したコレクショ�
 
 ![Run manuallyの説明2](./img/run-manually2.png)
 
-Preview 画面で読み込まれたデータファイルが CSV であることと読み込まれた内容が元のデータファイルと一致していることを確認し、`Usu localy` をクリックする。
+Preview 画面で読み込まれたデータファイルが CSV であることと読み込まれた内容が元のデータファイルと一致していることを確認し、`Use localy` をクリックする。
 > **補足:** `Upload to Workspace` を選択した場合、Postman Cloud上にアップロードされる。次回コレクションを実行する際に、アップロードされたデータファイルを使用することができる。
 
 ![Run manuallyの説明3](./img/run-manually3.png)
@@ -130,6 +130,16 @@ Preview 画面で読み込まれたデータファイルが CSV であること�
 スケジュールが設定され、１時間毎にコレクション実行されるようになる
 
 ![Schedule runの説明4](./img/schedule-run4.png)
+
+スケジュール通りに実行された場合の結果を以下に示す
+
+![Schedule runの説明5](./img/schedule-run5.png)
+
+スケジューリングされたコレクションの実行を削除する方法を説明する。
+スケジューリングを設定したコレクションを選択し、`実行` -> `スケジュール` とクリックする。
+すると、さきほど設定した「test-run」が表示されるので、`･･･` から `削除` を選択することで当該設定を削除できる。
+
+![Schedule runの説明6](./img/schedule-run6.png)
 
 ### Automate runs via CLI の実行
 
