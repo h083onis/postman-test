@@ -31,7 +31,7 @@
   - [5.1 Postman プラン比較（Free / Basic / Professional / Enterprise）](#51-postman-プラン比較free--basic--professional--enterprise)
   - [5.2 各項目の説明](#52-各項目の説明)
 
-<!-- <div class="page"/> -->
+<div class="page"/>
 
 # 1. Postman とは
 
